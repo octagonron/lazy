@@ -1,0 +1,25 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Install Dependencies
+    init: |
+      source $HOME/.cargo/env
+      npm install
+    command: |
+      npm run tauri dev
+
+ports:
+  - port: 1420
+    onOpen: open-preview
+    visibility: public
+  - port: 3000
+    onOpen: ignore
+    visibility: public
+
+vscode:
+  extensions:
+    - rust-lang.rust-analyzer
+    - tauri-apps.tauri-vscode
+    - dbaeumer.vscode-eslint
+    - esbenp.prettier-vscode
